@@ -62,7 +62,8 @@ export default function Footer() {
                 </IconButton>
 
                 <IconButton
-                    href="#"
+                    href="https://www.linkedin.com/in/krishna-chavda-589b13313/"
+                    target="_blank"
                     sx={{
                         color: "#9ca3af",
                         transition: "all 0.3s ease",
@@ -77,7 +78,8 @@ export default function Footer() {
                 </IconButton>
 
                 <IconButton
-                    href="mailto:yourmail@gmail.com"
+                    href="mailto:krishnachavda1104@gmail.com"
+                    target="_blank"
                     sx={{
                         color: "#9ca3af",
                         transition: "all 0.3s ease",

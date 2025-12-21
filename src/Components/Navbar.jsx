@@ -143,7 +143,7 @@ export default function Header() {
             <Tooltip title="GitHub">
               <IconButton
                 sx={{ color: "#e5e7eb" }}
-                href="https://github.com/yourusername"
+                href="https://github.com/k021104"
                 target="_blank"
               >
                 <GitHubIcon />
@@ -152,7 +152,7 @@ export default function Header() {
             <Tooltip title="LinkedIn">
               <IconButton
                 sx={{ color: "#e5e7eb" }}
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/krishna-chavda-589b13313/"
                 target="_blank"
               >
                 <LinkedInIcon />

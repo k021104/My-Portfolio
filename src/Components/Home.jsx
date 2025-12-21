@@ -115,6 +115,8 @@ export default function Home() {
                                     transform: "translateY(-3px)",
                                 },
                             }}
+                            component="a"
+                            href="#projects"
                         >
                             View Projects
                         </Button>
@@ -134,6 +136,7 @@ export default function Home() {
                                     color: "#020617",
                                 },
                             }}
+                            component="a" href="/resume.pdf" target="_blank"
                         >
                             Download Resume
                         </Button>
