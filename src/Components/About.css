@@ -1,0 +1,61 @@
+.about {
+  padding: 100px 20px;
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f8fafc
+  );
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 38px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Right cards */
+
+.about-right {
+  display: grid;
+  gap: 20px;
+}
+
+.about-card {
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.about-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #4f46e5;
+}
+
+.about-card p {
+  color: #555;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
