@@ -37,21 +37,21 @@ export default function Projects() {
             desc: "Designed a modern e-learning UI with React Router, implementing multi-page navigation and a user-friendly course layout.",
             img: elearningImg,
             code: "https://github.com/k021104/react_router_app",
-            live: "reactrouterapp.vercel.app",
+            live: "https://reactrouterapp.vercel.app/",
         },
         {
             title: "Home Decoration Studio",
             desc: "Created a visually appealing home decoration studio website landing page using React Bootstrap, focusing on responsive design and clean UI components.",
             img: homestudioImg,
             code: "https://github.com/k021104/React-Bootatrap-APP",
-            live: "reactbootstrapapp.vercel.app",
+            live: "https://reactbootstrapapp.vercel.app/",
         },
         {
             title: "Medical Hospital Website",
             desc: "Designed a healthcare website interface using Material UI with a clean, professional look suitable for hospital and medical services.",
             img: medilabImg,
             code: "https://github.com/k021104/MUI-APP",
-            live: "reactmuiapp-six.vercel.app",
+            live: "https://reactmuiapp-six.vercel.app/",
         },
     ];
 
