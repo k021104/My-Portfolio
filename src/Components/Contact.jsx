@@ -144,7 +144,7 @@ export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
     useEffect(() => {
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 800, once: false });
     }, []);
 
     const handleChange = (e) => {
@@ -152,8 +152,10 @@ export default function Contact() {
     };
 
     const handleSubmit = (e) => {
+        alert("Message was sent");
         e.preventDefault();
         console.log(formData);
+        setFormData({ name: "", email: "", message: "" });
         // You can integrate email API or backend later
     };
 
@@ -192,7 +194,7 @@ export default function Contact() {
                     right: "5%",
                     width: 300,
                     height: 300,
-                    background: "linear-gradient(135deg, #ffeb7f, #c9a0ff)", 
+                    background: "linear-gradient(135deg, #ffeb7f, #c9a0ff)",
                     filter: "blur(150px)",
                     opacity: 0.35,
                     zIndex: 0,

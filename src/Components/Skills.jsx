@@ -22,7 +22,6 @@ export default function Skills() {
             items: [
                 { name: "Bootstrap", level: 85 },
                 { name: "Material UI", level: 80 },
-                { name: "Flexbox", level: 90 },
                 { name: "Responsive Design", level: 95 },
             ],
             icon: <BrushIcon />,
