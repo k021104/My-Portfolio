@@ -122,7 +122,7 @@ export default function About() {
               cursor: "pointer",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
               "&:hover": {
-                transform: "translateX(8px)",
+                transform: "translateX(8px) !important",
                 boxShadow: "0 20px 30px rgba(0,0,0,0.6)",
               },
             }}
