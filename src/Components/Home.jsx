@@ -136,7 +136,7 @@ export default function Home() {
                                     color: "#020617",
                                 },
                             }}
-                            component="a" href="#" target="_blank"
+                            component="a" href="/resume.pdf" target="_blank"
                         >
                             Download Resume
                         </Button>

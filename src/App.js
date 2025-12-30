@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import Projects from './Components/Projects';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
+import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+    <div id="back-to-top-anchor" />
       <Navbar />
       <Home />
       <About />
@@ -26,6 +28,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
