@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
-import '../styles//Projects.css'
+import '../styles/Projects.css'
 
 const projects = [
   {
