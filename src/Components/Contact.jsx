@@ -41,7 +41,6 @@ export default function Contact () {
       <div className='orb orb--2' />
 
       <div className='contact__inner'>
-        {/* Section label */}
         <motion.div
           className='section-label'
           initial={{ opacity: 0, y: -12 }}
@@ -53,7 +52,6 @@ export default function Contact () {
           get in touch
         </motion.div>
 
-        {/* Header */}
         <div className='contact__header'>
           <motion.h2
             className='contact__heading'
@@ -75,7 +73,6 @@ export default function Contact () {
           </motion.p>
         </div>
 
-        {/* 3 info cards — horizontal row */}
         <motion.div
           className='info__row'
           initial={{ opacity: 0, y: 20 }}
@@ -94,7 +91,6 @@ export default function Contact () {
           ))}
         </motion.div>
 
-        {/* Form — centered below cards */}
         <motion.div
           className='form__wrap'
           initial={{ opacity: 0, y: 30 }}
@@ -103,7 +99,6 @@ export default function Contact () {
           transition={{ delay: 0.35, duration: 0.7 }}
         >
           <form className='form' onSubmit={handleSubmit}>
-            {/* Name + Email side by side */}
             <div className='form__row'>
               <div className='field'>
                 <label htmlFor='name'>// name</label>
@@ -131,7 +126,6 @@ export default function Contact () {
               </div>
             </div>
 
-            {/* Message */}
             <div className='field'>
               <label htmlFor='message'>// message</label>
               <textarea
