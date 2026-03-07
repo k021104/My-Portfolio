@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --bg: #060810;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #818cf8;
+  --accent-2: #67e8f9;
+  --accent-3: #f0abfc;
+  --text: #f1f5f9;
+  --muted: #475569;
+  --subtle: #94a3b8;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  width: 100%;
+  background: var(--bg);
+  position: relative;
+  padding: 3.5rem 6vw 2.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Top gradient line replacing plain border */
+.footer__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
+  opacity: 0.4;
+}
+
+/* ── Inner ───────────────────────────────────────────────── */
+.footer__inner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ── Name ────────────────────────────────────────────────── */
+.footer__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+/* ── Role ────────────────────────────────────────────────── */
+.footer__role {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── Social Icons ────────────────────────────────────────── */
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.footer__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* GitHub — green glow */
+.footer__icon--github:hover {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.3);
+  transform: translateY(-3px);
+}
+
+/* LinkedIn — blue glow */
+.footer__icon--linkedin:hover {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 0 14px rgba(96, 165, 250, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Email — accent glow */
+.footer__icon--email:hover {
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.3);
+  box-shadow: 0 0 14px rgba(129, 140, 248, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.footer__divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+  margin-top: 0.6rem;
+}
+
+/* ── Copyright ───────────────────────────────────────────── */
+.footer__copy {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .footer {
+    padding: 3rem 1.5rem 2rem;
+  }
+  .footer__name {
+    font-size: 1.1rem;
+  }
+  .footer__role {
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+  }
+  .footer__line {
+    width: 80%;
+  }
+}

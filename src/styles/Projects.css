@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+/* ── Variables ───────────────────────────────────────────── */
+:root {
+  --bg: #060810;
+  --surface: #0b1120;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #818cf8;
+  --accent-2: #67e8f9;
+  --accent-3: #f0abfc;
+  --text: #f1f5f9;
+  --muted: #475569;
+  --subtle: #94a3b8;
+
+  /* Card accents */
+  --c-blue: #60a5fa;
+  --c-purple: #c084fc;
+  --c-green: #4ade80;
+  --c-orange: #fb923c;
+  --c-pink: #f472b6;
+  --c-cyan: #67e8f9;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.projects {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 6vw 6rem;
+  box-sizing: border-box;
+}
+
+/* Dot grid */
+.projects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 38px 38px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Orbs ────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+}
+
+.orb--1 {
+  width: 380px;
+  height: 380px;
+  background: var(--accent);
+  opacity: 0.12;
+  top: -80px;
+  left: -60px;
+  animation: drift 16s ease-in-out infinite;
+}
+
+.orb--2 {
+  width: 260px;
+  height: 260px;
+  background: var(--accent-2);
+  opacity: 0.09;
+  bottom: 0;
+  right: 5%;
+  animation: drift 12s ease-in-out infinite reverse;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(20px, -25px);
+  }
+  66% {
+    transform: translate(-15px, 18px);
+  }
+}
+
+/* ── Inner ───────────────────────────────────────────────── */
+.projects__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Section Label ───────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.07);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.8rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.projects__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.projects__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.heading--italic {
+  font-weight: 300;
+  font-style: italic;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent-3)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects__subtext {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--subtle);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Cards Grid — 3 columns ──────────────────────────────── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Left accent bar */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 18px 0 0 18px;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+
+.card--blue::before {
+  background: linear-gradient(180deg, var(--c-blue), transparent);
+}
+.card--purple::before {
+  background: linear-gradient(180deg, var(--c-purple), transparent);
+}
+.card--green::before {
+  background: linear-gradient(180deg, var(--c-green), transparent);
+}
+.card--orange::before {
+  background: linear-gradient(180deg, var(--c-orange), transparent);
+}
+.card--pink::before {
+  background: linear-gradient(180deg, var(--c-pink), transparent);
+}
+.card--cyan::before {
+  background: linear-gradient(180deg, var(--c-cyan), transparent);
+}
+
+/* Hover per card */
+.card--blue:hover {
+  transform: translateY(-5px);
+  border-color: rgba(96, 165, 250, 0.22);
+  box-shadow: 0 20px 40px rgba(96, 165, 250, 0.08);
+}
+.card--purple:hover {
+  transform: translateY(-5px);
+  border-color: rgba(192, 132, 252, 0.22);
+  box-shadow: 0 20px 40px rgba(192, 132, 252, 0.08);
+}
+.card--green:hover {
+  transform: translateY(-5px);
+  border-color: rgba(74, 222, 128, 0.22);
+  box-shadow: 0 20px 40px rgba(74, 222, 128, 0.08);
+}
+.card--orange:hover {
+  transform: translateY(-5px);
+  border-color: rgba(251, 146, 60, 0.22);
+  box-shadow: 0 20px 40px rgba(251, 146, 60, 0.08);
+}
+.card--pink:hover {
+  transform: translateY(-5px);
+  border-color: rgba(244, 114, 182, 0.22);
+  box-shadow: 0 20px 40px rgba(244, 114, 182, 0.08);
+}
+.card--cyan:hover {
+  transform: translateY(-5px);
+  border-color: rgba(103, 232, 249, 0.22);
+  box-shadow: 0 20px 40px rgba(103, 232, 249, 0.08);
+}
+
+/* ── Card Top Row ────────────────────────────────────────── */
+.card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.card__links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.card__link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+.card__link--live:hover {
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+/* ── Card Content ────────────────────────────────────────── */
+.card__title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.card__desc {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--subtle);
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* ── Tags ────────────────────────────────────────────────── */
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 0.22rem 0.6rem;
+  border-radius: 50px;
+  letter-spacing: 0.05em;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.card--blue .tag:hover {
+  color: var(--c-blue);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+.card--purple .tag:hover {
+  color: var(--c-purple);
+  border-color: rgba(192, 132, 252, 0.3);
+}
+.card--green .tag:hover {
+  color: var(--c-green);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+.card--orange .tag:hover {
+  color: var(--c-orange);
+  border-color: rgba(251, 146, 60, 0.3);
+}
+.card--pink .tag:hover {
+  color: var(--c-pink);
+  border-color: rgba(244, 114, 182, 0.3);
+}
+.card--cyan .tag:hover {
+  color: var(--c-cyan);
+  border-color: rgba(103, 232, 249, 0.3);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects {
+    padding: 5rem 1.5rem 4rem;
+  }
+
+  .projects__heading {
+    font-size: 2.8rem;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .orb--1 {
+    width: 220px;
+    height: 220px;
+  }
+  .orb--2 {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 360px) {
+  .projects__heading {
+    font-size: 2.4rem;
+  }
+  .card {
+    padding: 1.4rem 1.2rem;
+  }
+}

@@ -1,140 +1,131 @@
-import React from "react";
-import { Box, Typography, Paper, LinearProgress } from "@mui/material";
-import CodeIcon from "@mui/icons-material/Code";
-import BrushIcon from "@mui/icons-material/Brush";
-import BuildIcon from "@mui/icons-material/Build";
+import { motion } from "framer-motion";
+import { Code2, Palette, Wrench } from "lucide-react";
+import "../styles/Skills.css";
+
+const skills = [
+  {
+    category: "Frontend",
+    icon: <Code2 size={22} />,
+    color: "blue",
+    items: [
+      { name: "HTML",       level: 95 },
+      { name: "CSS",        level: 90 },
+      { name: "JavaScript", level: 85 },
+      { name: "React.js",   level: 80 },
+    ],
+  },
+  {
+    category: "UI / Styling",
+    icon: <Palette size={22} />,
+    color: "purple",
+    items: [
+      { name: "Bootstrap",         level: 85 },
+      { name: "Material UI",       level: 80 },
+      { name: "Responsive Design", level: 95 },
+    ],
+  },
+  {
+    category: "Tools",
+    icon: <Wrench size={22} />,
+    color: "green",
+    items: [
+      { name: "Git",    level: 90 },
+      { name: "GitHub", level: 85 },
+      { name: "Vercel", level: 80 },
+    ],
+  },
+];
 
 export default function Skills() {
-    const skills = [
-        {
-            category: "Frontend",
-            items: [
-                { name: "HTML", level: 95 },
-                { name: "CSS", level: 90 },
-                { name: "JavaScript", level: 85 },
-                { name: "React.js", level: 80 },
-            ],
-            icon: <CodeIcon />,
-            color: "#2563eb",
-        },
-        {
-            category: "UI / Styling",
-            items: [
-                { name: "Bootstrap", level: 85 },
-                { name: "Material UI", level: 80 },
-                { name: "Responsive Design", level: 95 },
-            ],
-            icon: <BrushIcon />,
-            color: "#9333ea",
-        },
-        {
-            category: "Tools",
-            items: [
-                { name: "Git", level: 90 },
-                { name: "GitHub", level: 85 },
-                { name: "Vercel", level: 80 },
-            ],
-            icon: <BuildIcon />,
-            color: "#22c55e",
-        },
-    ];
+  return (
+    <section id="skills" className="skills">
 
-    return (
-        <Box
-            id="skills"
-            sx={{
-                py: { xs: 8, md: 12 },
-                px: { xs: 2, md: 4 },
-                background: "linear-gradient(135deg, #0f172a, #020617)",
-            }}
+      {/* Background orbs */}
+      <div className="orb orb--1" />
+      <div className="orb orb--2" />
+
+      <div className="skills__inner">
+
+        {/* Section label */}
+        <motion.div
+          className="section-label"
+          initial={{ opacity: 0, y: -12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-            <Box sx={{ textAlign: "center", mb: 6 }}>
-                <Typography
-                    variant="h3"
-                    data-aos="fade-down"
-                    data-aos-duration="1000"
-                    sx={{ color: "#e5e7eb", fontWeight: 700, mb: 2, }}
-                >
-                    Skills
-                </Typography>
-                <Typography sx={{ color: "#cbd5f5", fontSize: "1.1rem" }}
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    data-aos-duration="1000"
-                >
-                    Technologies and tools I use while building modern frontend
-                    applications.
-                </Typography>
-            </Box>
+          <span className="label__dot" />
+          what i know
+        </motion.div>
 
-            <Box
-                sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    gap: 4,
-                    maxWidth: '100%',
-                    mx: "auto",
-                }}
+        {/* Header */}
+        <div className="skills__header">
+          <motion.h2
+            className="skills__heading"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+          >
+            My <span className="heading--italic">Skills</span>
+          </motion.h2>
+
+          <motion.p
+            className="skills__subtext"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Technologies and tools I use while building modern frontend applications.
+          </motion.p>
+        </div>
+
+        {/* Cards */}
+        <div className="skills__cards">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className={`card card--${skill.color}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
             >
-                {skills.map((skill, index) => (
-                    <Paper
-                        key={index}
-                        data-aos="fade-up"
-                        data-aos-delay={index * 150}
-                        sx={{
-                            flex: "1 1 280px",
-                            p: 4,
-                            borderRadius: 3,
-                            background: "rgba(255,255,255,0.06)",
-                            backdropFilter: "blur(12px)",
-                            borderTop: `4px solid ${skill.color}`,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "flex-start",
-                            gap: 2,
-                            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                            cursor: "pointer",
-                            "&:hover": {
-                                transform: "translateY(-10px)",
-                                boxShadow: `0 20px 30px ${skill.color}44`,
-                            },
-                        }}
-                    >
-                        <Box sx={{ color: skill.color, fontSize: 30 }}>{skill.icon}</Box>
-                        <Typography
-                            sx={{ fontWeight: 600, color: "#e5e7eb", fontSize: "1.2rem" }}
-                        >
-                            {skill.category}
-                        </Typography>
+              {/* Card header */}
+              <div className="card__header">
+                <div className={`card__icon icon--${skill.color}`}>
+                  {skill.icon}
+                </div>
+                <p className="card__title">{skill.category}</p>
+              </div>
 
-                        <Box sx={{ width: "100%", mt: 1 }}>
-                            {skill.items.map((item, i) => (
-                                <Box key={i} sx={{ mb: 2 }}>
-                                    <Typography
-                                        sx={{ color: "#9ca3af", fontSize: "0.95rem", mb: 0.5 }}
-                                    >
-                                        {item.name}
-                                    </Typography>
-                                    <LinearProgress
-                                        variant="determinate"
-                                        value={item.level}
-                                        data-aos="fade-right"
-                                        sx={{
-                                            height: 8,
-                                            borderRadius: 5,
-                                            "& .MuiLinearProgress-bar": {
-                                                backgroundColor: skill.color,
-                                            },
-                                            backgroundColor: "#2e3340",
-                                        }}
-                                    />
-                                </Box>
-                            ))}
-                        </Box>
-                    </Paper>
+              {/* Skill items */}
+              <div className="skill__list">
+                {skill.items.map((item, i) => (
+                  <div key={i} className="skill__item">
+                    <div className="skill__row">
+                      <span className="skill__name">{item.name}</span>
+                      <span className="skill__pct">{item.level}%</span>
+                    </div>
+                    <div className="bar__track">
+                      <motion.div
+                        className={`bar__fill bar--${skill.color}`}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${item.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.1, duration: 0.9, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
                 ))}
-            </Box>
-        </Box>
-    );
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
 }

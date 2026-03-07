@@ -23,3 +23,9 @@ section {
 body {
   background-color: black;
 }
+
+body {
+  margin: 0;
+  padding: 0; /* remove the default 16px MUI padding */
+  box-sizing: border-box;
+}

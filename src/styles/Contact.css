@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --bg: #060810;
+  --surface: #0b1120;
+  --surface-2: #0f1628;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #818cf8;
+  --accent-2: #67e8f9;
+  --accent-3: #f0abfc;
+  --glow: rgba(129, 140, 248, 0.15);
+  --text: #f1f5f9;
+  --muted: #475569;
+  --subtle: #94a3b8;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.contact {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 6vw 6rem;
+  box-sizing: border-box;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 38px 38px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Orbs ────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+}
+.orb--1 {
+  width: 360px;
+  height: 360px;
+  background: var(--accent);
+  opacity: 0.14;
+  top: -80px;
+  left: -60px;
+  animation: drift 16s ease-in-out infinite;
+}
+.orb--2 {
+  width: 260px;
+  height: 260px;
+  background: var(--accent-3);
+  opacity: 0.1;
+  bottom: 0;
+  right: 5%;
+  animation: drift 12s ease-in-out infinite reverse;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(20px, -25px);
+  }
+  66% {
+    transform: translate(-15px, 18px);
+  }
+}
+
+/* ── Inner ───────────────────────────────────────────────── */
+.contact__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Section Label ───────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.07);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.8rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.label__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.contact__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.heading--italic {
+  font-weight: 300;
+  font-style: italic;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent-3)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.contact__subtext {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--subtle);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Info Row — 3 cards horizontal ──────────────────────── */
+.info__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.info__card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.info__card:hover {
+  border-color: rgba(129, 140, 248, 0.25);
+  transform: translateY(-3px);
+}
+.info__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(129, 140, 248, 0.1);
+  color: var(--accent);
+}
+.info__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  color: var(--muted);
+  letter-spacing: 0.07em;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.info__value {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+/* ── Form Wrap ───────────────────────────────────────────── */
+.form__wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.form__wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* ── Form ────────────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+.field input,
+.field textarea {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  outline: none;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.08);
+}
+.field textarea {
+  min-height: 130px;
+}
+
+/* ── Submit Button ───────────────────────────────────────── */
+.btn__submit {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  border: none;
+  border-radius: 50px;
+  padding: 0.85rem 2rem;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-shadow: 0 6px 24px rgba(129, 140, 248, 0.28);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.btn__submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(129, 140, 248, 0.44);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Tablet landscape — 960px */
+@media (max-width: 960px) {
+  .contact {
+    padding: 5rem 4vw 4rem;
+  }
+}
+
+/* Tablet portrait — 768px */
+@media (max-width: 768px) {
+  .info__row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact__heading {
+    font-size: 3rem;
+  }
+  .form__wrap {
+    padding: 1.75rem;
+  }
+}
+
+/* Mobile — 560px */
+@media (max-width: 560px) {
+  .contact {
+    padding: 5rem 1.5rem 4rem;
+  }
+  .info__row {
+    grid-template-columns: 1fr;
+  }
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+  .form__wrap {
+    padding: 1.4rem;
+  }
+  .contact__heading {
+    font-size: 2.8rem;
+  }
+  .info__value {
+    font-size: 0.82rem;
+  }
+  .orb--1 {
+    width: 220px;
+    height: 220px;
+  }
+  .orb--2 {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Small mobile — 360px */
+@media (max-width: 360px) {
+  .contact__heading {
+    font-size: 2.4rem;
+  }
+  .info__card {
+    padding: 0.75rem 1rem;
+  }
+  .field input,
+  .field textarea {
+    font-size: 0.85rem;
+  }
+}

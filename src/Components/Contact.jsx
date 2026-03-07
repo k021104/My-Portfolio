@@ -1,145 +1,155 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Send, Mail, Github, Linkedin } from 'lucide-react'
+import '../styles/Contact.css'
 
-export default function Contact() {
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+export default function Contact () {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
 
-    useEffect(() => {
-        AOS.init({ duration: 800, once: false });
-    }, []);
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleSubmit = e => {
+    e.preventDefault()
+    alert('Message was sent')
+    console.log(formData)
+    setFormData({ name: '', email: '', message: '' })
+  }
 
-    const handleSubmit = (e) => {
-        alert("Message was sent");
-        e.preventDefault();
-        console.log(formData);
-        setFormData({ name: "", email: "", message: "" });
-        // You can integrate email API or backend later
-    };
+  const infoCards = [
+    {
+      icon: <Mail size={17} />,
+      label: 'email',
+      value: 'krishnachavda@email.com'
+    },
+    {
+      icon: <Github size={17} />,
+      label: 'github',
+      value: 'github.com/k021104'
+    },
+    {
+      icon: <Linkedin size={17} />,
+      label: 'linkedin',
+      value: 'linkedin.com/in/krishna-chavda'
+    }
+  ]
 
-    return (
-        <Box
-            id="contact"
-            sx={{
-                position: "relative",
-                py: { xs: 8, md: 12 },
-                px: { xs: 2, md: 6 },
-                background: "linear-gradient(135deg, #0a0f1e, #020617)",
-                color: "#e5e7eb",
-                overflow: "hidden",
-            }}
+  return (
+    <section id='contact' className='contact'>
+      <div className='orb orb--1' />
+      <div className='orb orb--2' />
+
+      <div className='contact__inner'>
+        {/* Section label */}
+        <motion.div
+          className='section-label'
+          initial={{ opacity: 0, y: -12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-            {/* Glow Boxes */}
-            {/* Glow Boxes */}
-            <Box
-                sx={{
-                    position: "absolute",
-                    top: "15%",
-                    left: "10%",
-                    width: 250,
-                    height: 250,
-                    background: "linear-gradient(135deg, #00ffcc, #0066ff)",
-                    filter: "blur(150px)",
-                    opacity: 0.5,
-                    zIndex: 0,
-                    borderRadius: "50%",
-                }}
-            />
-            <Box
-                sx={{
-                    position: "absolute",
-                    bottom: "15%",
-                    right: "5%",
-                    width: 300,
-                    height: 300,
-                    background: "linear-gradient(135deg, #ffeb7f, #c9a0ff)",
-                    filter: "blur(150px)",
-                    opacity: 0.35,
-                    zIndex: 0,
-                    borderRadius: "50%",
-                }}
-            />
+          <span className='label__dot' />
+          get in touch
+        </motion.div>
 
-            {/* Section Header */}
-            <Box sx={{ textAlign: "center", mb: 6, position: "relative", zIndex: 1 }} data-aos="fade-up">
-                <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-                    Contact
-                </Typography>
-                <Typography sx={{ color: "#cbd5f5", fontSize: "1.1rem" }}>
-                    Feel free to reach out for collaborations or just say hi!
-                </Typography>
-            </Box>
+        {/* Header */}
+        <div className='contact__header'>
+          <motion.h2
+            className='contact__heading'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+          >
+            Contact <span className='heading--italic'>Me</span>
+          </motion.h2>
+          <motion.p
+            className='contact__subtext'
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Feel free to reach out for collaborations or just say hi!
+          </motion.p>
+        </div>
 
-            {/* Form */}
-            <Box
-                component="form"
-                onSubmit={handleSubmit}
-                sx={{
-                    maxWidth: 600,
-                    mx: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 3,
-                    position: "relative",
-                    zIndex: 1,
-                }}
-            >
-                {["name", "email", "message"].map((field, index) => (
-                    <TextField
-                        key={field}
-                        variant="filled"
-                        label={field === "name" ? "Name" : field === "email" ? "Email" : "Message"}
-                        name={field}
-                        value={formData[field]}
-                        onChange={handleChange}
-                        fullWidth
-                        multiline={field === "message"}
-                        rows={field === "message" ? 5 : 1}
-                        InputProps={{
-                            sx: {
-                                color: "#e5e7eb",
-                                background: "rgba(255,255,255,0.1)",
-                                borderRadius: 2,
-                                "&:hover": { background: "rgba(255,255,255,0.15)" },
-                                "&.Mui-focused": { background: "rgba(255,255,255,0.2)" },
-                            },
-                        }}
-                        InputLabelProps={{ sx: { color: "#cbd5f5" } }}
-                        data-aos="fade-up"
-                        data-aos-delay={index * 150}
-                    />
-                ))}
+        {/* 3 info cards — horizontal row */}
+        <motion.div
+          className='info__row'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          {infoCards.map((card, index) => (
+            <div key={index} className='info__card'>
+              <div className='info__icon'>{card.icon}</div>
+              <div>
+                <span className='info__label'>{card.label}</span>
+                <span className='info__value'>{card.value}</span>
+              </div>
+            </div>
+          ))}
+        </motion.div>
 
-                <Button
-                    type="submit"
-                    sx={{
-                        background: "rgba(34,197,94,0.15)",
-                        color: "#22c55e",
-                        py: 1.5,
-                        fontWeight: 600,
-                        fontSize: "1rem",
-                        textTransform: "none",
-                        border: "1px solid #22c55e",
-                        borderRadius: 2,
-                        backdropFilter: "blur(6px)",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                            background: "rgba(34,197,94,0.10)",
-                            boxShadow: "0 0 12px rgba(34,197,94,0.8)",
-                            transform: "scale(1.05)",
-                        },
-                    }}
-                    data-aos="fade-up"
-                    data-aos-delay={450}
-                >
-                    Send Message
-                </Button>
-            </Box>
-        </Box>
-    );
+        {/* Form — centered below cards */}
+        <motion.div
+          className='form__wrap'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35, duration: 0.7 }}
+        >
+          <form className='form' onSubmit={handleSubmit}>
+            {/* Name + Email side by side */}
+            <div className='form__row'>
+              <div className='field'>
+                <label htmlFor='name'>// name</label>
+                <input
+                  id='name'
+                  type='text'
+                  name='name'
+                  placeholder='Your name'
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className='field'>
+                <label htmlFor='email'>// email</label>
+                <input
+                  id='email'
+                  type='email'
+                  name='email'
+                  placeholder='your@email.com'
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Message */}
+            <div className='field'>
+              <label htmlFor='message'>// message</label>
+              <textarea
+                id='message'
+                name='message'
+                placeholder='Write your message here...'
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <button type='submit' className='btn__submit'>
+              Send Message <Send size={16} />
+            </button>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  )
 }

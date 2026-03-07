@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap');
+
+/* ── Variables ───────────────────────────────────────────── */
+:root {
+  --nav-height: 68px;
+  --bg: #060810;
+  --surface: #0b1020;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #818cf8;
+  --accent-2: #67e8f9;
+  --accent-glow: rgba(129, 140, 248, 0.15);
+  --text: #f1f5f9;
+  --muted: #475569;
+  --subtle: #94a3b8;
+}
+
+/* ── Navbar Shell ────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: rgba(6, 8, 16, 0.75);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Top gradient line — matches Home accent */
+.navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* ── Inner ───────────────────────────────────────────────── */
+.navbar__inner {
+  max-width: 1160px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ── Logo ────────────────────────────────────────────────── */
+.navbar__logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.navbar__logo:hover {
+  color: var(--accent);
+}
+
+.logo__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(129, 140, 248, 0.3);
+  flex-shrink: 0;
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(129, 140, 248, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 14px var(--accent), 0 0 28px rgba(129, 140, 248, 0.45);
+  }
+}
+
+/* ── Desktop Nav ─────────────────────────────────────────── */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.nav__link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--subtle);
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  letter-spacing: 0.06em;
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Active state */
+.nav__link--active {
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* Glowing underline on active */
+.nav__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* ── Social Buttons ──────────────────────────────────────── */
+.navbar__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--border);
+}
+
+.social__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--subtle);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.social__btn:hover {
+  color: var(--accent);
+  background: var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* ── Hamburger ───────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--subtle);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background: var(--accent-glow);
+  color: var(--accent);
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+/* ── Spacer ──────────────────────────────────────────────── */
+.navbar__spacer {
+  height: var(--nav-height);
+}
+
+/* ── Drawer Overlay ──────────────────────────────────────── */
+.drawer__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  background: rgba(6, 8, 16, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ── Drawer Panel ────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 270px;
+  z-index: 102;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Glowing left edge on drawer */
+.drawer::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: -1px;
+  height: 70%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* ── Drawer Name ─────────────────────────────────────────── */
+.drawer__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+/* Small dot before name in drawer */
+.drawer__name::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Drawer Links ────────────────────────────────────────── */
+.drawer__link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--subtle);
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Slash prefix — techy feel */
+.drawer__link::before {
+  content: '/';
+  font-size: 0.75rem;
+  color: var(--accent);
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.drawer__link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(4px);
+}
+
+.drawer__link:hover::before {
+  opacity: 0.8;
+}
+
+.drawer__link--active {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-color: rgba(129, 140, 248, 0.2);
+  transform: translateX(4px);
+}
+
+.drawer__link--active::before {
+  opacity: 1;
+}
+
+/* ── Drawer Socials ──────────────────────────────────────── */
+.drawer__socials {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar__nav,
+  .navbar__socials {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

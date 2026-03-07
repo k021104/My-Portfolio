@@ -1,148 +1,231 @@
-import React from "react";
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { motion } from 'framer-motion'
+import { ArrowRight, Download, Github, Linkedin } from 'lucide-react'
+import '../styles/Home.css'
 
-export default function Home() {
-    return (
-        <section id="home">
-            <Box
-                sx={{
-                    minHeight: "100vh",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    background: "linear-gradient(135deg, #020617, #0f172a)",
-                    position: "relative",
-                    overflow: "hidden",
-                    px: 2,
-                }}
+export default function Home () {
+  return (
+    <section id='home' className='hero'>
+      {/* Background orbs */}
+      <div className='orb orb--1' />
+      <div className='orb orb--2' />
+      <div className='orb orb--3' />
+
+      <div className='hero__inner'>
+        {/* ── LEFT ── */}
+        <div className='hero__left'>
+          {/* Badge */}
+          <motion.div
+            className='badge'
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
+            <span className='badge__dot' />
+            Available for Opportunities
+          </motion.div>
+
+          {/* Greeting */}
+          <motion.p
+            className='hero__greeting'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.6 }}
+          >
+            Hello, I'm
+          </motion.p>
+
+          {/* Name */}
+          <motion.h1
+            className='hero__name'
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
+          >
+            Krishna
+            <br />
+            <span className='name--italic'>Chavda</span>
+          </motion.h1>
+
+          {/* Role */}
+          <motion.div
+            className='hero__role'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <span className='role__line role__line--l' />
+            <span className='role__text'>Aspiring Full Stack Developer</span>
+            <span className='role__line role__line--r' />
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            className='hero__desc'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.6 }}
+          >
+            Passionate student crafting modern, responsive and scalable web
+            applications using React and JavaScript.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            className='hero__actions'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <a href='#projects' className='btn btn--primary'>
+              View Projects <ArrowRight size={15} strokeWidth={2} />
+            </a>
+            <a
+              href='/resume.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='btn btn--ghost'
             >
-                {/* Gradient Blobs */}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        width: { xs: 200, md: 300 },
-                        height: { xs: 200, md: 300 },
-                        background: "#2563eb",
-                        filter: "blur(170px)",
-                        opacity: 0.6,
-                        top: "15%",
-                        left: "10%",
-                    }}
-                />
-                <Box
-                    sx={{
-                        position: "absolute",
-                        width: 300,
-                        height: 300,
-                        background: "#22c55e",
-                        filter: "blur(170px)",
-                        opacity: 0.6,
-                        bottom: "15%",
-                        right: "10%",
-                    }}
-                />
+              <Download size={14} strokeWidth={2} /> Resume
+            </a>
+          </motion.div>
 
-                {/* Glass Card */}
-                <Box
-                    sx={{
-                        maxWidth: 850,
-                        textAlign: "center",
-                        p: { xs: 4, md: 7 },
-                        borderRadius: 4,
-                        background: "rgba(255,255,255,0.05)",
-                        backdropFilter: "blur(18px)",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        zIndex: 1,
-                    }}
-                >
-                    <Typography
-                        variant="h2"
-                        data-aos="fade-down" data-aos-duration="1000"
-                        sx={{
-                            fontWeight: 700,
-                            color: "#e5e7eb",
-                            fontSize: { xs: "2.4rem", md: "3.4rem" },
-                        }}
-                    >
-                        Hi, I’m{" "}
-                        <Box component="span" sx={{ color: "#22c55e" }}>
-                            Krishna Chavda
-                        </Box>
-                    </Typography>
+          {/* Socials */}
+          <motion.div
+            className='hero__socials'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.05, duration: 0.6 }}
+          >
+            <a
+              href='https://github.com/k021104'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='social__btn'
+              title='GitHub'
+            >
+              <Github size={17} />
+            </a>
+            <a
+              href='https://www.linkedin.com/in/krishna-chavda-589b13313/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='social__btn'
+              title='LinkedIn'
+            >
+              <Linkedin size={17} />
+            </a>
+            <span className='social__sep' />
+            <span className='social__label'>Find me on</span>
+          </motion.div>
+        </div>
 
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            fontSize: "1.4rem",
-                            color: "#9ca3af",
-                        }}
-                        data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000"
-                    >
-                        Aspiring Full Stack Developer
-                    </Typography>
+        {/* ── RIGHT — Terminal Card ── */}
+        <motion.div
+          className='hero__right'
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.9, ease: 'easeOut' }}
+        >
+          <div className='terminal'>
+            {/* Top bar */}
+            <div className='terminal__bar'>
+              <span className='t-dot t-dot--red' />
+              <span className='t-dot t-dot--yellow' />
+              <span className='t-dot t-dot--green' />
+              <span className='terminal__title'>~/krishna/portfolio.js</span>
+            </div>
 
-                    <Typography
-                        sx={{
-                            mt: 3,
-                            fontSize: "1.05rem",
-                            lineHeight: 1.7,
-                            color: "#cbd5f5",
-                        }}
-                        data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000"
-                    >
-                        Passionate student crafting modern, responsive and scalable
-                        web applications using React and JavaScript.
-                    </Typography>
+            {/* Code body */}
+            <div className='terminal__body'>
+              <div className='t-line'>
+                <span className='t-prompt'>→</span>
+                <span className='t-cmd'>
+                  <span className='c-keyword'>const</span>{' '}
+                  <span className='c-var'>developer</span>{' '}
+                  <span className='c-op'>=</span> {'{'}
+                </span>
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>name</span>
+                <span className='c-op'>:</span>
+                {'     '}
+                <span className='c-str'>"Krishna Chavda"</span>,
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>role</span>
+                <span className='c-op'>:</span>
+                {'     '}
+                <span className='c-str'>"Aspiring Dev"</span>,
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>skills</span>
+                <span className='c-op'>:</span>
+                {'   '}
+                <span className='c-arr'>[</span>
+                <span className='c-str'>"React"</span>,{' '}
+                <span className='c-str'>"JS"</span>
+                <span className='c-arr'>]</span>,
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>learning</span>
+                <span className='c-op'>:</span>{' '}
+                <span className='c-bool'>true</span>,
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>openTo</span>
+                <span className='c-op'>:</span>
+                {'   '}
+                <span className='c-str'>"opportunities"</span>,
+              </div>
+              <div className='t-line t-line--out'>
+                <span className='c-key'>passion</span>
+                <span className='c-op'>:</span>
+                {'  '}
+                <span className='c-num'>100</span>
+              </div>
+              <div className='t-line'>
+                <span className='t-prompt'>→</span>
+                <span className='t-cmd'>
+                  {'}'}
+                  <span className='t-cursor' />
+                </span>
+              </div>
+            </div>
 
-                    <Stack
-                        direction={{ xs: "column", sm: "row" }}
-                        spacing={2}
-                        justifyContent="center"
-                        mt={5}
-                        data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000"
-                    >
-                        <Button
-                            variant="contained"
-                            sx={{
-                                px: 4,
-                                py: 1.4,
-                                borderRadius: "30px",
-                                textTransform: "none",
-                                fontSize: "1rem",
-                                background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
-                                boxShadow: "0 12px 30px rgba(37,99,235,0.2)",
-                                "&:hover": {
-                                    transform: "translateY(-3px)",
-                                },
-                            }}
-                            component="a"
-                            href="#projects"
-                        >
-                            View Projects
-                        </Button>
+            {/* Stat strip */}
+            <div className='terminal__stats'>
+              <div className='t-stat'>
+                <span className='t-stat__num'>10+</span>
+                <span className='t-stat__label'>Projects</span>
+              </div>
+              <div className='t-stat__sep' />
+              <div className='t-stat'>
+                <span className='t-stat__num'>1+</span>
+                <span className='t-stat__label'>Yrs Learning</span>
+              </div>
+              <div className='t-stat__sep' />
+              <div className='t-stat'>
+                <span className='t-stat__num'>∞</span>
+                <span className='t-stat__label'>Curiosity</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                px: 4,
-                                py: 1.4,
-                                borderRadius: "30px",
-                                textTransform: "none",
-                                fontSize: "1rem",
-                                color: "#22c55e",
-                                borderColor: "#22c55e",
-                                "&:hover": {
-                                    background: "#22c55e",
-                                    color: "#020617",
-                                },
-                            }}
-                            component="a" href="/resume.pdf" target="_blank"
-                        >
-                            Download Resume
-                        </Button>
-                    </Stack>
-                </Box>
-            </Box>
-        </section>
-    );
+      {/* Scroll hint */}
+      <motion.div
+        className='scroll-hint'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+        aria-hidden='true'
+      >
+        <div className='scroll-hint__track'>
+          <div className='scroll-hint__thumb' />
+        </div>
+        <span className='scroll-hint__label'>scroll</span>
+      </motion.div>
+    </section>
+  )
 }

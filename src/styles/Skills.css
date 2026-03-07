@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+/* ── Variables ───────────────────────────────────────────── */
+:root {
+  --bg: #060810;
+  --surface: #0b1120;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #818cf8;
+  --accent-2: #67e8f9;
+  --accent-3: #f0abfc;
+  --text: #f1f5f9;
+  --muted: #475569;
+  --subtle: #94a3b8;
+
+  --c-blue: #60a5fa;
+  --c-purple: #c084fc;
+  --c-green: #4ade80;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.skills {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 6vw 6rem;
+  box-sizing: border-box;
+}
+
+/* Dot grid */
+.skills::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 38px 38px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Orbs ────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+}
+
+.orb--1 {
+  width: 380px;
+  height: 380px;
+  background: var(--accent);
+  opacity: 0.13;
+  top: -100px;
+  right: -60px;
+  animation: drift 16s ease-in-out infinite;
+}
+
+.orb--2 {
+  width: 260px;
+  height: 260px;
+  background: var(--accent-2);
+  opacity: 0.1;
+  bottom: 0;
+  left: 5%;
+  animation: drift 12s ease-in-out infinite reverse;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(20px, -25px);
+  }
+  66% {
+    transform: translate(-15px, 18px);
+  }
+}
+
+/* ── Inner ───────────────────────────────────────────────── */
+.skills__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Section Label ───────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.07);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.8rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.skills__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.skills__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.heading--italic {
+  font-weight: 300;
+  font-style: italic;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent-3)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skills__subtext {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--subtle);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Cards Grid ──────────────────────────────────────────── */
+.skills__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Top accent line */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 20px 20px 0 0;
+}
+
+.card--blue::before {
+  background: linear-gradient(90deg, var(--c-blue), transparent);
+}
+.card--purple::before {
+  background: linear-gradient(90deg, var(--c-purple), transparent);
+}
+.card--green::before {
+  background: linear-gradient(90deg, var(--c-green), transparent);
+}
+
+/* Hover */
+.card--blue:hover {
+  transform: translateY(-6px);
+  border-color: rgba(96, 165, 250, 0.25);
+  box-shadow: 0 24px 48px rgba(96, 165, 250, 0.1);
+}
+.card--purple:hover {
+  transform: translateY(-6px);
+  border-color: rgba(192, 132, 252, 0.25);
+  box-shadow: 0 24px 48px rgba(192, 132, 252, 0.1);
+}
+.card--green:hover {
+  transform: translateY(-6px);
+  border-color: rgba(74, 222, 128, 0.25);
+  box-shadow: 0 24px 48px rgba(74, 222, 128, 0.1);
+}
+
+/* ── Card Header ─────────────────────────────────────────── */
+.card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon--blue {
+  background: rgba(96, 165, 250, 0.12);
+  color: var(--c-blue);
+}
+.icon--purple {
+  background: rgba(192, 132, 252, 0.12);
+  color: var(--c-purple);
+}
+.icon--green {
+  background: rgba(74, 222, 128, 0.12);
+  color: var(--c-green);
+}
+
+.card__title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* ── Skill List ──────────────────────────────────────────── */
+.skill__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.skill__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skill__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill__name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--subtle);
+}
+
+.skill__pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ── Progress Bar ────────────────────────────────────────── */
+.bar__track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar__fill {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.bar--blue {
+  background: linear-gradient(90deg, var(--c-blue), rgba(96, 165, 250, 0.4));
+}
+.bar--purple {
+  background: linear-gradient(90deg, var(--c-purple), rgba(192, 132, 252, 0.4));
+}
+.bar--green {
+  background: linear-gradient(90deg, var(--c-green), rgba(74, 222, 128, 0.4));
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .skills__cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills {
+    padding: 5rem 1.5rem 4rem;
+  }
+
+  .skills__heading {
+    font-size: 2.8rem;
+  }
+
+  .skills__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .orb--1 {
+    width: 220px;
+    height: 220px;
+  }
+  .orb--2 {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills__heading {
+    font-size: 2.4rem;
+  }
+  .card {
+    padding: 1.5rem 1.25rem;
+  }
+}

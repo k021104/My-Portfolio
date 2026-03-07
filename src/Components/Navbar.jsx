@@ -1,200 +1,135 @@
-import React, { useState, useEffect } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Tooltip,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, Linkedin, Menu, X } from "lucide-react";
+import "../styles/Navbar.css";
 
 const navItems = ["Home", "About", "Skills", "Projects", "Contact"];
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
+  // Detect which section is visible on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
+    function onScroll() {
+      const scrollY = window.scrollY + 120;
 
       navItems.forEach((item) => {
         const section = document.getElementById(item.toLowerCase());
         if (!section) return;
 
         const top = section.offsetTop;
-        const height = section.offsetHeight;
+        const bottom = top + section.offsetHeight;
 
-        if (scrollPos >= top && scrollPos < top + height) {
+        if (scrollY >= top && scrollY < bottom) {
           setActiveSection(item.toLowerCase());
         }
       });
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h6"
-        sx={{
-          fontWeight: 600,
-          color: "#e5e7eb",
-        }}
-      >
-        Krishna Chavda
-      </Typography>
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton
-              component="a"
-              href={`#${item.toLowerCase()}`}
-              data-aos="fade-right"
-              data-aos-delay={item * 100}
-              sx={{
-                textAlign: "center",
-                color:
-                  activeSection === item.toLowerCase() ? "#22c55e" : "#e5e7eb",
-              }}
-            >
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  // Lock background scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+  }, [menuOpen]);
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar
-        component="nav"
-        position="fixed"
-        sx={{
-          background: "linear-gradient(90deg, #020617, #0f172a)",
-          px: { xs: 2, md: 6 },
-        }}
-      >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Logo / Name */}
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 600,
-              color: "#e5e7eb",
-            }}
-          >
+    <>
+      {/* ── Navbar ── */}
+      <header className="navbar">
+        <div className="navbar__inner">
+
+          {/* Logo */}
+          <a href="#home" className="navbar__logo">
+            <span className="logo__dot" />
             Krishna Chavda
-          </Typography>
+          </a>
 
-          {/* Desktop Navbar */}
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              gap: 4,
-              alignItems: "center",
-            }}
-          >
-            {navItems.map((item) => {
-              const sectionId = item.toLowerCase();
-              const isActive = activeSection === sectionId;
+          {/* Desktop Links */}
+          <nav className="navbar__nav">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className={`nav__link ${activeSection === item.toLowerCase() ? "nav__link--active" : ""}`}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
 
-              return (
-                <Button
+          {/* Desktop Social Icons */}
+          <div className="navbar__socials">
+            <a href="https://github.com/k021104" target="_blank" rel="noopener noreferrer" className="social__btn" title="GitHub">
+              <Github size={18} />
+            </a>
+            <a href="https://www.linkedin.com/in/krishna-chavda-589b13313/" target="_blank" rel="noopener noreferrer" className="social__btn" title="LinkedIn">
+              <Linkedin size={18} />
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
+        </div>
+      </header>
+
+      {/* Spacer so content does not hide under fixed navbar */}
+      <div className="navbar__spacer" />
+
+      {/* ── Mobile Drawer ── */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Dark overlay behind drawer */}
+            <motion.div
+              className="drawer__overlay"
+              onClick={() => setMenuOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+
+            {/* Drawer panel */}
+            <motion.div
+              className="drawer"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            >
+              <p className="drawer__name">Krishna Chavda</p>
+
+              {navItems.map((item) => (
+                <a
                   key={item}
-                  component="a"
-                  href={`#${sectionId}`}
-                  data-aos="fade-down"
-                  data-aos-delay={item * 100}
-                  sx={{
-                    color: isActive ? "#22c55e" : "#e5e7eb",
-                    fontWeight: isActive ? 600 : 500,
-                    borderBottom: isActive
-                      ? "2px solid #22c55e"
-                      : "2px solid transparent",
-                    borderRadius: 0,
-                    transition: "all 0.25s ease",
-                    "&:hover": {
-                      color: "#22c55e",
-                      borderBottom: "2px solid #22c55e",
-                    },
-                  }}
+                  href={`#${item.toLowerCase()}`}
+                  className={`drawer__link ${activeSection === item.toLowerCase() ? "drawer__link--active" : ""}`}
+                  onClick={() => setMenuOpen(false)}
                 >
                   {item}
-                </Button>
-              );
-            })}
+                </a>
+              ))}
 
-            {/* Social Icons */}
-            <Tooltip title="GitHub">
-              <IconButton
-                sx={{ color: "#e5e7eb" }}
-                href="https://github.com/k021104"
-                target="_blank"
-              >
-                <GitHubIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="LinkedIn">
-              <IconButton
-                sx={{ color: "#e5e7eb" }}
-                href="https://www.linkedin.com/in/krishna-chavda-589b13313/"
-                target="_blank"
-              >
-                <LinkedInIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-
-          {/* Mobile Menu Button */}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ display: { md: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-
-      {/* Mobile Drawer */}
-      <Box component="nav">
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-          sx={{
-            display: { xs: "block", md: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: 240,
-              background: "#0f172a",
-              color: "#fff",
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-
-      {/* To push content below AppBar */}
-      <Toolbar />
-    </Box>
+              {/* Social icons inside drawer */}
+              <div className="drawer__socials">
+                <a href="https://github.com/k021104" target="_blank" rel="noopener noreferrer" className="social__btn">
+                  <Github size={18} />
+                </a>
+                <a href="https://www.linkedin.com/in/krishna-chavda-589b13313/" target="_blank" rel="noopener noreferrer" className="social__btn">
+                  <Linkedin size={18} />
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
