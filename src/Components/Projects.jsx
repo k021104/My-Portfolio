@@ -76,15 +76,6 @@ const projects = [
     accent: 'teal'
   },
   {
-    title: 'Admin Dashboard with CRUD Operations',
-    desc: 'A responsive admin dashboard interface that allows managing products, categories, and users with full CRUD functionality. Designed with a clean layout focused on efficient data management and usability.',
-    tags: ['React', 'JavaScript', 'CRUD', 'Dashboard'],
-    code: 'https://github.com/k021104/dummyjson-api-admin-panel',
-    live: 'https://dummyjson-api-admin-panel.vercel.app/',
-    num: '08',
-    accent: 'teal'
-  },
-  {
     title: 'Blog Application UI',
     desc: 'A modern blog interface built with React featuring structured blog posts, category sections, and a clean reading layout focused on user experience and responsive design.',
     tags: ['React', 'Firebase', 'CSS', 'UI'],
