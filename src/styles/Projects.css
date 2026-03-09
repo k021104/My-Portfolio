@@ -19,6 +19,11 @@
   --c-orange: #fb923c;
   --c-pink: #f472b6;
   --c-cyan: #67e8f9;
+  --c-yellow: #facc15;
+  --c-teal: #14b8a6;
+  --c-red: #f87171;
+  --c-indigo: #818cf8;
+  --c-lime: #a3e635;
 }
 
 /* ── Section ─────────────────────────────────────────────── */
@@ -240,6 +245,25 @@
 .card--cyan::before {
   background: linear-gradient(180deg, var(--c-cyan), transparent);
 }
+.card--yellow::before {
+  background: linear-gradient(180deg, var(--c-yellow), transparent);
+}
+
+.card--teal::before {
+  background: linear-gradient(180deg, var(--c-teal), transparent);
+}
+
+.card--red::before {
+  background: linear-gradient(180deg, var(--c-red), transparent);
+}
+
+.card--indigo::before {
+  background: linear-gradient(180deg, var(--c-indigo), transparent);
+}
+
+.card--lime::before {
+  background: linear-gradient(180deg, var(--c-lime), transparent);
+}
 
 /* Hover per card */
 .card--blue:hover {
@@ -271,6 +295,35 @@
   transform: translateY(-5px);
   border-color: rgba(103, 232, 249, 0.22);
   box-shadow: 0 20px 40px rgba(103, 232, 249, 0.08);
+}
+.card--yellow:hover {
+  transform: translateY(-5px);
+  border-color: rgba(250, 204, 21, 0.22);
+  box-shadow: 0 20px 40px rgba(250, 204, 21, 0.08);
+}
+
+.card--teal:hover {
+  transform: translateY(-5px);
+  border-color: rgba(20, 184, 166, 0.22);
+  box-shadow: 0 20px 40px rgba(20, 184, 166, 0.08);
+}
+
+.card--red:hover {
+  transform: translateY(-5px);
+  border-color: rgba(248, 113, 113, 0.22);
+  box-shadow: 0 20px 40px rgba(248, 113, 113, 0.08);
+}
+
+.card--indigo:hover {
+  transform: translateY(-5px);
+  border-color: rgba(129, 140, 248, 0.22);
+  box-shadow: 0 20px 40px rgba(129, 140, 248, 0.08);
+}
+
+.card--lime:hover {
+  transform: translateY(-5px);
+  border-color: rgba(163, 230, 53, 0.22);
+  box-shadow: 0 20px 40px rgba(163, 230, 53, 0.08);
 }
 
 /* ── Card Top Row ────────────────────────────────────────── */
@@ -382,6 +435,30 @@
 .card--cyan .tag:hover {
   color: var(--c-cyan);
   border-color: rgba(103, 232, 249, 0.3);
+}
+.card--yellow .tag:hover {
+  color: var(--c-yellow);
+  border-color: rgba(250, 204, 21, 0.3);
+}
+
+.card--teal .tag:hover {
+  color: var(--c-teal);
+  border-color: rgba(20, 184, 166, 0.3);
+}
+
+.card--red .tag:hover {
+  color: var(--c-red);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.card--indigo .tag:hover {
+  color: var(--c-indigo);
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.card--lime .tag:hover {
+  color: var(--c-lime);
+  border-color: rgba(163, 230, 53, 0.3);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

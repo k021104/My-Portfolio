@@ -56,6 +56,69 @@ const projects = [
     live: 'https://reactmuiapp-six.vercel.app/',
     num: '06',
     accent: 'cyan'
+  },
+  {
+    title: 'E-Commerce Website UI',
+    desc: 'A modern and responsive e-commerce website interface built with React, featuring product listings, category sections, and a clean shopping layout focused on user experience.',
+    tags: ['React', 'CSS', 'Responsive'],
+    code: 'https://github.com/k021104/ecommerceapp-react',
+    live: 'https://ecommerceapp-react-rho.vercel.app/',
+    num: '07',
+    accent: 'yellow'
+  },
+  {
+    title: 'Admin Dashboard with CRUD Operations',
+    desc: 'A responsive admin dashboard interface that allows managing products, categories, and users with full CRUD functionality. Designed with a clean layout focused on efficient data management and usability.',
+    tags: ['React', 'JavaScript', 'CRUD', 'Dashboard'],
+    code: 'https://github.com/k021104/dummyjson-api-admin-panel',
+    live: 'https://dummyjson-api-admin-panel.vercel.app/',
+    num: '08',
+    accent: 'teal'
+  },
+  {
+    title: 'Admin Dashboard with CRUD Operations',
+    desc: 'A responsive admin dashboard interface that allows managing products, categories, and users with full CRUD functionality. Designed with a clean layout focused on efficient data management and usability.',
+    tags: ['React', 'JavaScript', 'CRUD', 'Dashboard'],
+    code: 'https://github.com/k021104/dummyjson-api-admin-panel',
+    live: 'https://dummyjson-api-admin-panel.vercel.app/',
+    num: '08',
+    accent: 'teal'
+  },
+  {
+    title: 'Blog Application UI',
+    desc: 'A modern blog interface built with React featuring structured blog posts, category sections, and a clean reading layout focused on user experience and responsive design.',
+    tags: ['React', 'Firebase', 'CSS', 'UI'],
+    code: 'https://github.com/k021104/Blog-app',
+    live: 'https://blog-app-iota-one-78.vercel.app/',
+    num: '09',
+    accent: 'red'
+  },
+  {
+    title: 'Bookstore Inventory Management Dashboard',
+    desc: 'A dashboard interface for managing bookstore inventory, allowing administrators to view, add, update, and organize book records with a structured and user-friendly layout.',
+    tags: ['React', 'JavaScript', 'Dashboard', 'UI'],
+    code: 'https://github.com/k021104/bookstore-inventory-management',
+    live: 'https://bookstore-inventory-management.vercel.app/',
+    num: '10',
+    accent: 'indigo'
+  },
+  {
+    title: 'Recipe Finder Application',
+    desc: 'A recipe discovery application that allows users to search and explore different recipes with a clean and responsive interface, making it easy to browse ingredients and meal ideas.',
+    tags: ['React', 'API', 'JavaScript', 'Responsive'],
+    code: 'PASTE_YOUR_GITHUB_LINK',
+    live: 'PASTE_YOUR_LIVE_LINK',
+    num: '11',
+    accent: 'lime'
+  },
+  {
+    title: 'Interactive Quiz Application',
+    desc: 'An interactive quiz application where users can answer multiple-choice questions and view their score instantly, designed with a clean and responsive user interface.',
+    tags: ['React', 'JavaScript', 'Quiz', 'Responsive'],
+    code: 'https://github.com/k021104/Quiz-app',
+    live: 'https://quiz-app-beta-eosin-39.vercel.app/',
+    num: '12',
+    accent: 'blue'
   }
 ]
 
